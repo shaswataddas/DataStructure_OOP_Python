@@ -11,5 +11,5 @@ Implementation of different DS concepts in Python.
 * Remove data from user given Index.
 
 
-![Output Logo](/images/Screenshot from 2021-05-30 01-44-23.png)
+![Output Logo](https://github.com/shaswataddas/DataStructure_Python/blob/main/images/Screenshot%20from%202021-05-30%2001-44-23.png)
 
