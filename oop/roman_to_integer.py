@@ -10,7 +10,7 @@ class Convert:
 			self.result += self.add(self.input_roma[self.index])
 			self.index+=1
 		print(self.index, self.length)	
-		self.result += self.compare(self.index)
+		self.result += self.compare(self.index)					# Check Last two character.
 
 	def show(self):
 		print(self.result)
@@ -21,12 +21,12 @@ class Convert:
 
 	def compare(self,ind):
 		if self.dictionary[self.input_roma[ind]]<self.dictionary[self.input_roma[ind+1]]:
-			return self.dictionary[self.input_roma[ind+1]] - self.dictionary[self.input_roma[ind]]
+			return self.dictionary[self.input_roma[ind+1]] - self.dictionary[self.input_roma[ind]] 		# if IX -> (10-1)
 		else:
-			return self.dictionary[self.input_roma[ind+1]] + self.dictionary[self.input_roma[ind]]
+			return self.dictionary[self.input_roma[ind+1]] + self.dictionary[self.input_roma[ind]]		# id XI -> (10+1)
 
 
-value = input()
+value = input()														# User Input
 converter1 = Convert(value)
 converter1.show() 
 
