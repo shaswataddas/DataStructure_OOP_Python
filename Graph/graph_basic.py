@@ -9,7 +9,7 @@ class Graph:
 				self.nodes[sou] = []
 			self.nodes[sou].append([des,price])
 
-	def search_city(self,s_key):
+	def availabe_city(self,s_key):
 		print(f'Source - {s_key}')
 		temp = []
 		for city,price in self.nodes[s_key]:
@@ -17,9 +17,28 @@ class Graph:
 		print(f'Availabe city - {temp}')
 
 	def get_total_price(self,source,destination):
+		flag=0
 		for city,price in self.nodes[source]:
 			if(city == destination):
 				print(f"From {source} to {destination} -> {price}")
+				flag=1
+		if flag==0:
+			print("No bus is Availabe")
+
+	def insert_value(self,parent,child,cost):
+		if parent not in self.nodes:
+			self.nodes[parent] = []
+		self.nodes[parent].append([child,cost])
+
+	def delete_value(self,parent,child):
+		if parent not in self.nodes:
+			print("No such city Present")
+		else:
+			index = -1
+			for city,price in self.nodes[parent]:
+				index+=1
+				if(city==child):
+					self.nodes[parent].pop(index)
 
 if __name__ == '__main__':
 	routers = [
@@ -34,5 +53,39 @@ if __name__ == '__main__':
 
 	g = Graph(routers)
 	g.create_nodes()
-	g.search_city("Darjeeling")
+	
+
+	print("Availabe City From Darjeeling: ")
+	g.availabe_city("Darjeeling")
+	
+	print('')
+	print("Total cost to go to Malda From Darjeeling")
 	g.get_total_price("Darjeeling","Malda")
+
+	print('')
+	print("Availabe City From Kolkata: ")
+	g.availabe_city("Kolkata")
+	
+	print('')
+	print("New Route Introduce from Kolkata to Darjeeling wiht cose 580:")
+	g.insert_value("Kolkata","Darjeeling","580")
+	
+	print('')
+	print("Availabe City From Kolkata: ")
+	g.availabe_city("Kolkata")
+
+	print('')
+	print("Cost Kolkata to Darjeeling: ")
+	g.get_total_price("Kolkata","Darjeeling")
+
+	print('')
+	print("Delete Route from Kolkata to Darjeeling")
+	g.delete_value("Kolkata","Darjeeling")
+
+	print('')
+	print("Availabe City From Kolkata: ")
+	g.availabe_city("Kolkata")
+	
+	print('')
+	print("Cost Kolkata to Darjeeling: ")
+	g.get_total_price("Kolkata","Darjeeling")
